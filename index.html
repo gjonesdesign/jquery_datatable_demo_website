@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js">
+	</script>
+	<script src="/index.js" async></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+</head>
+
+<body>
+	<table id="user-table">
+	</table>
+	<table id="new-table">
+	</table>
+	<!-- <form action="index.js" method="post" id="new-entry" onsubmit="submit_entry(); return false;"> -->
+	<form id="entry-form" action="">
+		<input name="id" placeholder="ID" type="number" value="01000749" />
+		<input name="fname" placeholder="First Name" type="text" />
+		<input name="lname" placeholder="Last Name" type="text" />
+		<input name="email" placeholder="Email" type="email" />
+		<input name="phone" placeholder="Phone" type="tel" />
+		<input name="contacts" placeholder="Social Contacts" type="text" />
+		<input type="submit" value="Submit" id="submit-button" />
+	</form>
+</body>
+
+</html>
