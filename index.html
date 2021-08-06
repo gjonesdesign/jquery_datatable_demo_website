@@ -7,25 +7,72 @@
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js">
 	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+	</script>
 	<script src="/index.js" async></script>
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 
-<body>
-	<table id="user-table">
-	</table>
-	<table id="new-table">
-	</table>
-	<!-- <form action="index.js" method="post" id="new-entry" onsubmit="submit_entry(); return false;"> -->
-	<form id="entry-form" action="">
-		<input name="id" placeholder="ID" type="number" value="01000749" />
-		<input name="fname" placeholder="First Name" type="text" />
-		<input name="lname" placeholder="Last Name" type="text" />
-		<input name="email" placeholder="Email" type="email" />
-		<input name="phone" placeholder="Phone" type="tel" />
-		<input name="contacts" placeholder="Social Contacts" type="text" />
-		<input type="submit" value="Submit" id="submit-button" />
-	</form>
+<body class="bg-secondary bg-opacity-25">
+	<div class="container-fluid p-3">
+		<div class="table-responsive bg-light p-5">
+			<table class="table table-striped table-dark table-borderless text-center align-middle" id="user-table">
+			</table>
+			<!-- <form action="index.js" method="post" id="new-entry" onsubmit="submit_entry(); return false;"> -->
+			<button class="align-bottom" id="add" data-bs-toggle="modal" data-bs-target="#form-modal">Add</button>
+			<div class="modal" id="form-modal" tabindex="-1" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<div class="modal-body">
+								<form id="entry-form" action="" onsubmit="">
+									<input name="id" placeholder="ID" type="text" required />
+									<input name="fname" placeholder="First Name" type="text" required />
+									<input name="lname" placeholder="Last Name" type="text" required />
+									<input name="email" placeholder="Emails, Separated By Comma" type="email" id="email"
+										multiple="true" required />
+									<input name="phone" placeholder="Phone Numbers, Seperated by Comma" type="tel"
+										required />
+									<input name="contacts" placeholder="Social Contacts, Seperated by Comma" type="text"
+										required />
+									<input type="submit" value="Save" id="submit-button" />
+								</form>
+							</div>
+							<button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</dic>
+		<!-- 
+	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+		Launch demo modal
+	</button>
+
+
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+					
+				</div>
+				<div class="modal-body">
+					...
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+ -->
+
 </body>
 
 </html>

@@ -16,40 +16,70 @@ var user_table = $('#user-table').DataTable({
 		},
 		{
 			title: "Social Contacts",
-			render: data => `${data}<button id="edit">Edit</button> <button id="delete">Delete</button>`
+		}, {
+			searchable: false,
+			orderable: false,
+			render: data => "<button class='btn btn-secondary btn-sm' id='edit' data-bs-toggle='modal' data-bs-target='#form-modal'>Edit</button> <button class='btn btn-danger btn-sm' id='delete'>Delete</button>"
 		}
 	]
 });
 
+function save_mode(edit_index) {
+	$("#entry-form").off("submit")
+	if (edit_index) {
+		$("#entry-form").submit(function (event) {
+			var form = new FormData(event.target);
+			var data = Object.fromEntries(form.entries());
+			var entry = Object.values(data);
+			for (i = 0; i < entry.length; i++) {
+				entry[i] = entry[i].replace(/[^a-z0-9,@.-\s]/gi, "")
+				console.log(entry[i]);
+			}
+			user_table.row(edit_index).data(entry).draw();
+			event.target.reset();
+			$("#form-modal").modal("hide");
+			return false;
+		});
+	} else {
+		$("#entry-form").submit(function (event) {
+			var form = new FormData(event.target);
+			var data = Object.fromEntries(form.entries());
+			var entry = Object.values(data);
+			for (i = 0; i < entry.length; i++) {
+				entry[i] = entry[i].replace(/[^a-z0-9,@.-\s]/gi, "")
+				console.log(entry[i]);
+			}
+			user_table.row.add(entry).draw();
+			event.target.reset();
+			$("#form-modal").modal("hide");
+			return false;
+		});
+	}
+}
 
-$("#entry-form").submit(function (event) {
-	const form = new FormData(event.target);
-	const data = Object.fromEntries(form.entries());
-	const entry = Object.values(data);
-
-	console.log(entry);
-	user_table.row.add(entry).draw();
-	event.target.reset();
-	return false;
+$("#add").on("click", function (event) {
+	save_mode(null);
 });
 
-$("#user_table").on("click", "tbody tr #edit", function (event) {
-	//get affected row entry
-	const row = user_table.row($(event.target).closest('tr'));
-	//get affected row().index() and append that to 'Submit' button attributes
-	//you may use global variable for that purpose if you prefer
-	$('#submit').attr('rowindex', row.index());
-	//switch 'Submit' button role to 'confirmEdit'
-	$('#submit').attr('action', 'confirmEdit');
-	//set up 'Type' and 'Amount' values according to the selected entry
-	$('#type').val(row.data()[0]);
-	$('#id').val(row.data()[1]);
+$("#user-table").on("click", "tbody tr #edit", function (event) {
+	var index = $(event.target).closest('tr');
+	var item = user_table.row(index).data();
+	var keys = ["id", "fname", "lname", "email", "phone", "contacts"];
+	var object = {};
+	for (i = 0; i < keys.length; i++) {
+		object[keys[i]] = item[i];
+	}
+	for (key in object) {
+		if (object.hasOwnProperty(key))
+			$('input[name=' + key + ']').val(object[key]);
+	}
+	save_mode(index);
 });
 
 $("#user-table").on("click", "tbody tr #delete", function (event) {
 	user_table.row($(event.target).closest('tr')).remove().draw();
 });
 
-//edit button creates form via element.create, values set to current values
-//onclick, form submits data via update_form (modelled after entry form)
-//user_table.draw();
+$('#form-modal').on('hidden.bs.modal', function (event) {
+	$(this).find('form')[0].reset();
+});
