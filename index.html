@@ -16,62 +16,80 @@
 		integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 
-<body class="bg-secondary bg-opacity-25">
-	<div class="container-fluid p-3">
-		<div class="table-responsive bg-light p-5">
-			<table class="table table-striped table-dark table-borderless text-center align-middle" id="user-table">
+<body class="bg-secondary bg-opacity-50 vh-100 vw-100 d-inline-block">
+
+	<div class="container-fluid p-3 vh-100 vw-100">
+		<div class="table-responsive bg-light p-5 text-center h-100 w-100">
+
+			<table class="table table-striped table-dark table-borderless align-middle py-3" id="user-table">
 			</table>
-			<!-- <form action="index.js" method="post" id="new-entry" onsubmit="submit_entry(); return false;"> -->
-			<button class="align-bottom" id="add" data-bs-toggle="modal" data-bs-target="#form-modal">Add</button>
+
+			<button class="align-bottom btn btn-success btn-lg px-5" id="add" data-bs-toggle="modal"
+				data-bs-target="#form-modal">Add</button>
+
 			<div class="modal" id="form-modal" tabindex="-1" role="dialog">
-				<div class="modal-dialog">
+				<div class="modal-dialog modal-dialog-centered">
 					<div class="modal-content">
+
 						<div class="modal-header">
-							<div class="modal-body">
-								<form id="entry-form" action="" onsubmit="">
-									<input name="id" placeholder="ID" type="text" required />
-									<input name="fname" placeholder="First Name" type="text" required />
-									<input name="lname" placeholder="Last Name" type="text" required />
-									<input name="email" placeholder="Emails, Separated By Comma" type="email" id="email"
-										multiple="true" required />
-									<input name="phone" placeholder="Phone Numbers, Seperated by Comma" type="tel"
-										required />
-									<input name="contacts" placeholder="Social Contacts, Seperated by Comma" type="text"
-										required />
-									<input type="submit" value="Save" id="submit-button" />
-								</form>
-							</div>
-							<button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							<h5 class="modal-title">Client Information:</h5>
+							<button class="btn-close text-end" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
+
+						<div class="modal-body">
+
+							<form id="entry-form" action="" onsubmit="">
+								<div class="mb-2 text-start">
+									<label class="form-label">ID:</label>
+									<input class="form-control" name="id" placeholder="ID" type="text" required />
+								</div>
+
+								<div class="mb-2 text-start">
+									<label class="form-label">First Name:</label>
+									<input class="form-control" name="fname" placeholder="First Name" type="text"
+										required />
+								</div>
+
+								<div class="mb-4 text-start">
+									<label class="form-label">Last Name:</label>
+									<input class="form-control" name="lname" placeholder="Last Name" type="text"
+										required />
+								</div>
+
+								<hr />
+
+								<div class="mb-2 text-start">
+									<label class="form-label">Email(s):</label>
+									<input class="form-control" name="email" placeholder="Emails, Separated By Comma"
+										type="email" id="email" multiple="true" required />
+								</div>
+
+								<div class="mb-2 text-start">
+									<label class="form-label">Phone Number(s):</label>
+									<input class="form-control" name="phone"
+										placeholder="Phone Numbers, Seperated by Comma" type="tel" required />
+								</div>
+
+								<div class="mb-4 text-start">
+									<label class="form-label">Social Contact(s):</label>
+									<input class="form-control" name="contacts"
+										placeholder="Social Contacts, Seperated by Comma" type="text" required />
+								</div>
+
+								<hr />
+
+								<input class="btn btn-success btn-lg px-5" type="submit" value="Save"
+									id="submit-button" />
+							</form>
+
+						</div>
+
 					</div>
 				</div>
 			</div>
-		</div>
-		</dic>
-		<!-- 
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-		Launch demo modal
-	</button>
 
-
-	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					
-				</div>
-				<div class="modal-body">
-					...
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
-				</div>
-			</div>
 		</div>
 	</div>
- -->
 
 </body>
 
